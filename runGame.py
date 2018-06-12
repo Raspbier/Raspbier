@@ -7,7 +7,6 @@ from Tkinter import *
 import tkFont
 import os
 
-continue_reading = True
 
 
 def end_read(signal,frame):
@@ -17,7 +16,6 @@ def end_read(signal,frame):
     GPIO.cleanup()
 
 def readFRID():
-    global continue_reading
     continue_reading = True
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
