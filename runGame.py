@@ -7,7 +7,7 @@ from Tkinter import *
 import tkFont
 import os
 
-continue_reading = True
+global continue_reading = True
 
 
 def end_read(signal,frame):
