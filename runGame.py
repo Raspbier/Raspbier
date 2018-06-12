@@ -7,10 +7,6 @@ from Tkinter import *
 import tkFont
 import os
 
-class Game:
-
-def __init__(self, round):
-        self.round = round
 
 def end_read(signal,frame):
     global continue_reading
