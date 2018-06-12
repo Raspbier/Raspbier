@@ -67,6 +67,8 @@ def readFRID():
 
 
 def writeRFID (data):
+    global continue_reading
+    continue_reading = True
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
 
@@ -135,6 +137,7 @@ time.sleep(2)
 print ("next step ist to prepare a RFID for first order")
 data = [10, 0, 0,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
 writeRFID(data)
+
 time.sleep(2)
 
 #mycomment
@@ -142,6 +145,7 @@ while (round < roundLimit):
 
     if firstOrder:
         print ('this is the first round')
+        firstOrder=False
     else:
         print('Hold the RFID from your customer to the reader')
         job = readFRID()
