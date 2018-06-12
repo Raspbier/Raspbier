@@ -168,7 +168,7 @@ while (round < roundLimit):
     time.sleep(2)
 
 
-    data = [product, amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
+    data = [int(product), int(amount), int(amountInWarehouse),0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
     print ('please put your rfid to the reader we will save your order')
     writeResponse = writeRFID(data)
     print (amount)
