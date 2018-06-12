@@ -7,6 +7,8 @@ from Tkinter import *
 import tkFont
 import os
 
+continue_reading = True
+
 
 def end_read(signal,frame):
     global continue_reading
@@ -130,7 +132,6 @@ roundLimit = 0
 amountInWarehouse = 0
 player = "Einzelhandler"
 
-continue_reading = True
 
 print  ("how many rounds to play (recomme34nded are more than 10")
 
