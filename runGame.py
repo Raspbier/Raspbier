@@ -15,7 +15,8 @@ def end_read(signal,frame):
     GPIO.cleanup()
 
 def readFRID():
-    global continue_reading = True
+    global continue_reading
+    continue_reading = True
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
 
@@ -105,7 +106,8 @@ def writeRFID (data):
                 MIFAREReader.MFRC522_StopCrypto1()
 
                 # Make sure to stop reading for cards
-                global continue_reading = False
+                global continue_reading 
+                continue_reading = False
             else:
                 print "Authentication error"
 
