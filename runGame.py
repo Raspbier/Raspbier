@@ -8,7 +8,6 @@ import tkFont
 import os
 
 
-
 def end_read(signal,frame):
     global continue_reading
     print("Ctrl+C captured, ending read.")
@@ -16,7 +15,7 @@ def end_read(signal,frame):
     GPIO.cleanup()
 
 def readFRID():
-    continue_reading = True
+    global continue_reading = True
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
 
@@ -66,17 +65,6 @@ def readFRID():
                 print ("Authentication error")
 
 
-
-
-# Capture SIGINT for cleanup when the script is aborted
-def end_read(signal,frame):
-    global continue_reading
-    print "Ctrl+C captured, ending read."
-    continue_reading = False
-    GPIO.cleanup()
-
-
-
 def writeRFID (data):
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
@@ -117,11 +105,12 @@ def writeRFID (data):
                 MIFAREReader.MFRC522_StopCrypto1()
 
                 # Make sure to stop reading for cards
-                continue_reading = False
+                global continue_reading = False
             else:
                 print "Authentication error"
 
 
+continue_reading = True
 
 product = str('')
 amount = 0
