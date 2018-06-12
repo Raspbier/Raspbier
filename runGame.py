@@ -81,7 +81,7 @@ amount = 0
 round= 0
 roundLimit = 0
 amountInWarehouse = 0
-player = "Einzelhändler"
+player = "Einzelhandler"
 
 
 print("how many rounds to play (recomme34nded are more than 10")
