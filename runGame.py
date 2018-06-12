@@ -130,12 +130,12 @@ for line in fileinput.input():
     roundLimit = int(line)
     fileinput.close()
 
-sleep(2)
+time.sleep(2)
 ###create first order
 print ("next step ist to prepare a RFID for first order")
 data = [10, 0, 0,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
 writeRFID(data)
-sleep(2)
+time.sleep(2)
 
 #mycomment
 while (round < roundLimit):
@@ -149,7 +149,7 @@ while (round < roundLimit):
     else:
         print('Hold the RFID from your customer to the reader')
         job = readFRID()
-    sleep(2)
+    time.sleep(2)
 
     print ('Related to your data of the sales in past, please create now your order')
     ##only senseful if more than one product can be ordered
@@ -161,7 +161,7 @@ while (round < roundLimit):
     for line in fileinput.input():
         product = line
         fileinput.close()
-    sleep(2)
+    time.sleep(2)
     
     print("how much beer do you likec?")
     print("Your order ist at least 1 liter at maximum 100 liter")
@@ -169,7 +169,7 @@ while (round < roundLimit):
     for line in fileinput.input():
         amount = line
         fileinput.close()
-    sleep(2)
+    time.sleep(2)
 
 
     data = [product, amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
