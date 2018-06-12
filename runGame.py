@@ -83,8 +83,9 @@ roundLimit = 0
 amountInWarehouse = 0
 player = "Einzelhandler"
 
+os.system("gnome-terminal -e 'print(\"how many rounds to play (recomme34nded are more than 10\")'")
 
-print("how many rounds to play (recomme34nded are more than 10")
+
 
 for line in fileinput.input():
     roundLimit = int(line)
