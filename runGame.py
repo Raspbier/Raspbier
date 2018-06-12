@@ -71,8 +71,6 @@ def readFRID():
                 print ("Authentication error")
 
 
-filepath = "/usr/bin/python2.7"
-output = subprocess.check_output(['python', filepath], stderr=subprocess.STDOUT)
 
 
 
