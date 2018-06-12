@@ -140,10 +140,6 @@ time.sleep(2)
 #mycomment
 while (round < roundLimit):
 
-
-    for line in fileinput.input():
-        product = line
-        fileinput.close()
     if firstOrder:
         print ('this is the first round')
     else:
