@@ -96,14 +96,10 @@ def writeRFID (data):
             # Check if authenticated
             if status == MIFAREReader.MI_OK:
 
-                print "Sector 8 looked like this:"
-                # Read block 8
-                MIFAREReader.MFRC522_Read(8)
-                print "\n"
 
-                print "Sector 8 will now be filled with 0xFF:"
-                # Write the data
                 MIFAREReader.MFRC522_Write(8, data)
+                print "show output \n"
+                MIFAREReader.MFRC522_Read(8)
                 print "\n"
                 MIFAREReader.MFRC522_StopCrypto1()
 
