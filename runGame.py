@@ -89,7 +89,7 @@ for line in fileinput.input():
 while (round < roundLimit):
     print ('your customer wants to order this amount of beer:')
     print ('please put your rfid to the reader')
-    amount = readRFID()
+    amount = readFRID()
     print (amount)
 
 
