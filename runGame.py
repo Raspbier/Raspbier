@@ -77,7 +77,7 @@ def end_read(signal,frame):
 
 
 
-def writeRFID (self, data):
+def writeRFID (data):
     # Hook the SIGINT
     signal.signal(signal.SIGINT, end_read)
 
