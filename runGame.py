@@ -9,7 +9,7 @@ import os
 
 class Game:
 
-    def __init__(self, round):
+def __init__(self, round):
         self.round = round
 
 def end_read(signal,frame):
@@ -80,8 +80,8 @@ roundLimit = 0
 amountInWarehouse = 0
 player = "Einzelhandler"
 
-os.system("start cmd")
-print  ('print(\"how many rounds to play (recomme34nded are more than 10\")')
+
+print  ("how many rounds to play (recomme34nded are more than 10")
 
 
 for line in fileinput.input():
