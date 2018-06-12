@@ -3,7 +3,9 @@ import RPi.GPIO as GPIO
 import MFRC522
 import requests
 import signal
-
+from Tkinter import *
+import tkFont
+import subprocess
 
 
 class Game:
@@ -68,12 +70,19 @@ def readFRID():
             else:
                 print ("Authentication error")
 
+
+
+output = subprocess.check_output(['python', filepath], stderr=subprocess.STDOUT)
+
+
+
 product = str('')
 amount = 0
 round= 0
 roundLimit = 0
 amountInWarehouse = 0
 player = "Einzelhändler"
+
 
 print("how many rounds to play (recomme34nded are more than 10")
 
