@@ -5,8 +5,7 @@ import requests
 import signal
 from Tkinter import *
 import tkFont
-import subprocess
-
+import os
 
 class Game:
 
