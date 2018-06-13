@@ -122,7 +122,7 @@ firstOrder=True
 productName = "Beer"
 status = "0-5"
 cycleTime = "60"
-
+data = []
 
 
 
@@ -134,6 +134,7 @@ for line in fileinput.input():
             x = str(line)
             parsed = True # we only get here if the previous line didn't throw an exception
             if (parsed == True):
+                global player
                 player = str(line)
                 fileinput.close()
         except ValueError:
@@ -198,6 +199,7 @@ while (round < roundLimit):
 
 
     #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
+    global data
     data.append(player.decode())
     print player.decode()
     print ('please put your rfid to the reader we will save your order')
