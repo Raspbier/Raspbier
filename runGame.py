@@ -200,13 +200,14 @@ while (round < roundLimit):
 
 
 
-    data = base64.b16decode(b'2445000450000000')
 
 
-    # data.append(player.encode())
-    # for x in range(0,15):
-    #     data.append(0x00)   
-    #     print data
+
+
+
+    for x in range(0,16):
+        data.append(0x00)   
+        print data
 
     print player.encode()
     print ('please put your rfid to the reader we will save your order')
