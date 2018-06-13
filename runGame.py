@@ -14,7 +14,7 @@ def end_read(signal,frame):
     continue_reading = False
     GPIO.cleanup()
 
-def readFRID():
+def readFRID(sektorToRead):
     global continue_reading
     continue_reading = True
     # Hook the SIGINT
@@ -51,12 +51,12 @@ def readFRID():
             MIFAREReader.MFRC522_SelectTag(uid)
 
             # Authenticate
-            status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, 8, key, uid)
+            status = MIFAREReader.MFRC522_Auth(MIFAREReader.PICC_AUTHENT1A, sektorToRead, key, uid)
 
             # Check if authenticated
             if status == MIFAREReader.MI_OK:
                 # MIFAREReader.MFRC522_Read(8)
-                data = MIFAREReader.MFRC522_Read(8)
+                data = MIFAREReader.MFRC522_Read(sektorToRead)
                 
                 MIFAREReader.MFRC522_StopCrypto1()
                 
