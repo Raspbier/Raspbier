@@ -95,8 +95,6 @@ def writeRFID (data):
 
             # Check if authenticated
             if status == MIFAREReader.MI_OK:
-
-
                 MIFAREReader.MFRC522_Write(8, data)
                 print "show output \n"
                 MIFAREReader.MFRC522_Read(8)
@@ -200,10 +198,11 @@ while (round < roundLimit):
 
     #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
     global data
+    print player.encode()
     data.append(player.encode())
-    while (len(data) < 16):
+    for x in range(0,15)
         data.append(0x00)   
-        print len(data)
+        print data
 
     print player.encode()
     print ('please put your rfid to the reader we will save your order')
