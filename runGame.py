@@ -201,9 +201,9 @@ while (round < roundLimit):
     #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
     global data
     data.append(player.encode())
-
-    while data.__len__ < 16:
-        data.append(0x00)
+    while (len(data) < 16):
+        data.append(0x00)   
+        print len(data)
 
     print player.encode()
     print ('please put your rfid to the reader we will save your order')
