@@ -198,7 +198,7 @@ while (round < roundLimit):
 
 
     #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
-    data = [0xFF, 0xFE, 0xFD, 0xFC]
+    data.append(player.decode())
     print player.decode()
     print ('please put your rfid to the reader we will save your order')
     writeResponse = writeRFID(data)
