@@ -160,7 +160,7 @@ if (player=='Seller'):
     print ("next step ist to prepare a RFID for first order")
     data = [10, player.decode(), 0,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
     writeRFID(data)
-    readFRID()
+    readFRID(8)
     time.sleep(2)
 
 
@@ -171,7 +171,7 @@ while (round < roundLimit):
         firstOrder=False
     else:
         print('Hold the RFID from your customer to the reader')
-        job = readFRID()
+        job = readFRID(8)
     time.sleep(2)
 
     print ('Related to your data of the sales in past, please create now your order')
