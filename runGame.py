@@ -138,6 +138,7 @@ for line in fileinput.input():
                 fileinput.close()
         except ValueError:
             print 'Invalid value! Please enter standard text.'
+            break
 
 
 print  ("how many rounds to play (recomme34nded are more than 10")
@@ -153,6 +154,7 @@ for line in fileinput.input():
                 fileinput.close()
         except ValueError:
             print 'Invalid value! Please enter an integer'
+            break
 
 time.sleep(2)
 ###hard coded first player need to call "Seller" to write the first order
@@ -199,7 +201,7 @@ while (round < roundLimit):
     data = [0xFF, 0xFE, 0xFD, 0xFC]
     print player.decode()
     print ('please put your rfid to the reader we will save your order')
-    writeResponse = writeRFID(8,data)
+    writeResponse = writeRFID(data)
     print (amount)
     readFRID(8)
     round = round +1
