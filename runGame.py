@@ -200,7 +200,7 @@ while (round < roundLimit):
     global data
     print player.encode()
     data.append(player.encode())
-    for x in range(0,15)
+    for x in range(0,15):
         data.append(0x00)   
         print data
 
