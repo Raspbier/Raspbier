@@ -202,7 +202,7 @@ while (round < roundLimit):
     global data
     data.append(player.encode())
 
-    while data.length < 16:
+    while data.__len__ < 16:
         data.append(0x00)
 
     print player.encode()
