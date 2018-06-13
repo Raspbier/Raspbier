@@ -120,8 +120,7 @@ firstOrder=True
 productName = "Beer"
 status = "0-5"
 cycleTime = "60"
-data = []
-
+data = base64.b16decode(b'0000000000000000')
 
 
 print("Please enter your name")
@@ -197,12 +196,16 @@ while (round < roundLimit):
 
 
     #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
-    global data
-    print player.encode()
-    data.append(player.encode())
-    for x in range(0,15):
-        data.append(0x00)   
-        print data
+
+
+
+    data = base64.b16decode(b'2445000450000000')
+
+
+    # data.append(player.encode())
+    # for x in range(0,15):
+    #     data.append(0x00)   
+    #     print data
 
     print player.encode()
     print ('please put your rfid to the reader we will save your order')
