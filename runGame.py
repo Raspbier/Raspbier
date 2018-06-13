@@ -6,7 +6,6 @@ import signal
 from Tkinter import *
 import tkFont
 import time
-import base64
 
 
 def end_read(signal,frame):
@@ -121,7 +120,7 @@ firstOrder=True
 productName = "Beer"
 status = "0-5"
 cycleTime = "60"
-data = base64.b16decode(b'0000000000000000')
+data = []
 
 
 print("Please enter your name")
@@ -204,7 +203,7 @@ while (round < roundLimit):
 
 
 
-
+    
     for x in range(0,16):
         data.append(0x00)   
         print data
