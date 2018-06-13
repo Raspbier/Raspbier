@@ -6,6 +6,7 @@ import signal
 from Tkinter import *
 import tkFont
 import time
+import base64
 
 
 def end_read(signal,frame):
