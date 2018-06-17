@@ -6,6 +6,7 @@ import signal
 from Tkinter import *
 import tkFont
 import time
+import warnings
 
 
 def end_read(signal,frame):
@@ -32,8 +33,6 @@ def readFRID(sektorToRead):
         (status,TagType) = MIFAREReader.MFRC522_Request(MIFAREReader.PICC_REQIDL)
 
         # If a card is found
-        if status == MIFAREReader.MI_OK:
-            print ("Card detected")
         
         # Get the UID of the card
         (status,uid) = MIFAREReader.MFRC522_Anticoll()
@@ -42,7 +41,7 @@ def readFRID(sektorToRead):
         if status == MIFAREReader.MI_OK:
 
             # Print UID
-            print ("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
+            #print ("Card read UID: "+str(uid[0])+","+str(uid[1])+","+str(uid[2])+","+str(uid[3]))
         
             # This is the default key for authentication
             key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
@@ -83,7 +82,7 @@ def writeRFID (data):
         # If we have the UID, continue
         if status == MIFAREReader.MI_OK:
             # Print UID
-            print "Card read UID: %s,%s,%s,%s" % (uid[0], uid[1], uid[2], uid[3])
+            
             # This is the default key for authentication
             key = [0xFF,0xFF,0xFF,0xFF,0xFF,0xFF]
             # Select the scanned tag
@@ -96,9 +95,9 @@ def writeRFID (data):
             # Check if authenticated
             if status == MIFAREReader.MI_OK:
                 MIFAREReader.MFRC522_Write(8, data)
-                print "show output \n"
+                #print "show output \n"
                 MIFAREReader.MFRC522_Read(8)
-                print "\n"
+                print "Write success"
                 MIFAREReader.MFRC522_StopCrypto1()
 
                 # Make sure to stop reading for cards
@@ -107,6 +106,9 @@ def writeRFID (data):
             else:
                 print "Authentication error"
 
+
+##suppress all warnings
+warnings.filterwarnings("ignore")
 
 continue_reading = True
 
