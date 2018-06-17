@@ -111,16 +111,17 @@ def writeRFID (data):
 continue_reading = True
 
 product = str('')
-amount = 0
-round= 0
+amountOfOrder = 0
+actualRound= 0
 roundLimit = 0
 amountInWarehouse = 0
-player = str('')
+player = ''
 firstOrder=True
 productName = "Beer"
-status = "0-5"
+status = "5"
 cycleTime = "60"
 data = []
+articleNr = '123'
 
 
 print("Please enter your name")
@@ -132,7 +133,7 @@ for line in fileinput.input():
             parsed = True # we only get here if the previous line didn't throw an exception
             if (parsed == True):
                 global player
-                player = str(line)
+                player = line
                 fileinput.close()
         except ValueError:
             print 'Invalid value! Please enter standard text.'
@@ -158,21 +159,39 @@ time.sleep(2)
 ###hard coded first player need to call "Seller" to write the first order
 if (player=='Seller'):
     print ("next step ist to prepare a RFID for first order")
-    data = [10, player.decode(), 0,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
-    writeRFID(data)
+    #data = [10, player.decode(), 0,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
+    #writeRFID(data)
     readFRID(8)
     time.sleep(2)
 
 
-while (round < roundLimit):
+while (actualRound < roundLimit):
+
 
     if firstOrder:
-        print ('this is the first round')
+        print ('this is the ' + str(actualRound) +' round')
         firstOrder=False
     else:
+        print ('this is the ' + str(actualRound) +' round\n')
         print('Hold the RFID from your customer to the reader')
         job = readFRID(8)
-    time.sleep(2)
+        time.sleep(2)
+        print ('your customer want to buy ' + str(job[0]) + ' boxes of beer from you.')
+        print ('')
+        print ('how much beer do you want to supply to your customer?')
+        print ('actually you have ' + str(amountInWarehouse) + ' boxes beer in you warehouse')
+        for line in fileinput.input():   
+            parsed = False
+            while not parsed:
+                try:
+                    x = int(line)
+                    parsed = True # we only get here if the previous line didn't throw an exception
+                    if (parsed == True):
+                        amountOfOrder = int(line)
+                        fileinput.close()
+                except ValueError:
+                    print 'Invalid value! Please enter an integer'
+                    break
 
     print ('Related to your data of the sales in past, please create now your order')
     ##only senseful if more than one product can be ordered
@@ -189,30 +208,36 @@ while (round < roundLimit):
     print("how much beer do you likec?")
     print("Your order ist at least 1 liter at maximum 100 liter")
 
-    for line in fileinput.input():
-        amount = line
-        fileinput.close()
-    time.sleep(2)
+    for line in fileinput.input():   
+        parsed = False
+        while not parsed:
+            try:
+                x = int(line)
+                parsed = True # we only get here if the previous line didn't throw an exception
+                if (parsed == True):
+                    amountOfOrder = int(line)
+                    fileinput.close()
+            except ValueError:
+                print 'Invalid value! Please enter an integer'
+                break
 
 
-    #data = [product.decode(), amount, amountInWarehouse,0,0,0,0,0, 0,0,0,0,0,0,0, 0]  
 
 
 
 
 
+    data = bytearray([int(amountOfOrder),int(actualRound),int(cycleTime),int(status), int(articleNr), 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00, 0x00])
 
+
+    #data = bytes([amountOfOrder,round,cycleTime,status, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,0x00, 0x00, 0x00])
+    
+    #data = [amountOfOrder, round, cycleTime, status, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100  ]
 
     
-    for x in range(0,16):
-        data.append(0x00)   
-        print data
-
-    print player.encode()
     print ('please put your rfid to the reader we will save your order')
     writeResponse = writeRFID(data)
-    print (amount)
 
-    readFRID(8)
-    round = round +1
+    time.sleep(2)
+    actualRound = actualRound +1
 
