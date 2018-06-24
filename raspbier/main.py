@@ -24,13 +24,18 @@ def validateStringInput(self, myString):
             print 'Invalid value! Please enter standard text.'
             break
 
+
+
+
+
+
 if __name__=='__main__':
 
     
     print("Please enter your name")
     for line in fileinput.input():   
         validateStringInput(line)
-        player = Player(line)
+        player = Player(line, 1)
         fileinput.close()
     
     print("How many rounds do you want to play?")

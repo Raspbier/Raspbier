@@ -11,7 +11,7 @@ class NFC():
     continue_reading = False
     GPIO.cleanup()
 
-def readFRID(sektorToRead):
+def readRFID(sektorToRead):
     global continue_reading
     continue_reading = True
     # Hook the SIGINT
