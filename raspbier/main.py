@@ -1,6 +1,6 @@
 import fileinput
 
-def validateIntInput(self, myInt):  
+def validateIntInput(myInt):  
     parsed = False
     while not parsed:
         try:
@@ -12,7 +12,7 @@ def validateIntInput(self, myInt):
             print 'Invalid value! Please enter standard text.'
             break
 
-def validateStringInput(self, myString):  
+def validateStringInput(myString):  
     parsed = False
     while not parsed:
         try:
