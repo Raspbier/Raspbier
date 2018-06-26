@@ -1,8 +1,12 @@
 class Player():
-    def __init__(self, name, nr)
+    def __init__(self, name, nr):
         self.name = name
         self.nr = nr
-        self.liste = []
+        self.orderList = []
+        self.purchaseList = []
 
-    def add(self, order)
-        self.liste.append(order) 
+    def addOrderList(self, order):
+        self.orderList.append(order) 
+
+    def addPurchaseList(self, order):
+        self.purchaseList.append(order) 

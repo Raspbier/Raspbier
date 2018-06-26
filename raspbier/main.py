@@ -1,4 +1,11 @@
 import fileinput
+from Player import Player
+from Game import Game
+from NFC import NFC
+from Order import Order
+from Article import Article
+import time
+import StringIO
 
 def validateIntInput(myInt):  
     parsed = False
@@ -35,7 +42,8 @@ if __name__=='__main__':
     print("Please enter your name")
     for line in fileinput.input():   
         validateStringInput(line)
-        player = Player(line, 1)
+        myString = str(line)
+        player = Player(myString, 1)
         fileinput.close()
     
     print("How many rounds do you want to play?")
@@ -49,11 +57,51 @@ if __name__=='__main__':
     nfc = NFC()
     ##testdata
 
-    amount = 23
+    firstOrder = True
+    amount = 5
     turn = 0
     status = 5
-    cycleTime = 60
+    cycleTime = 1
     playerFrom = 4
     playerTo = 2
-    firstBestellung = Bestellung(amount, turn, status, cycleTime, playerFrom, playerTo)
+    articleNr = 1
+    order = Order(amount, turn, status, cycleTime, playerFrom, playerTo, articleNr)
+#    data = order.createRFIDArrays()
+
+    data = order.createRFIDArrays()
+
     nfc.writeRFID(data)
+
+    print ("")
+    print ("Your RFID Tag and your Reader is working. Lets play!")
+    print ("")
+    print ("")
+
+
+    while (turn < game.getRoundLimit()):
+
+        print ("this is the " + str(turn) + " round")
+        firstOrder=False
+        print ("hold your order to the reader")
+        job = nfc.readRFID(8)
+        player.addOrderList(Order(job[0], job[1], job[2], job[3], job[4], job[5], job [6]))
+
+        print ("The order from your customer is saved.")
+        print ("")
+        print ("how much beer do you like to order?")
+        for line in fileinput.input():
+            validateIntInput(line)
+            order = Order(int(line), status, turn, cycleTime, playerFrom, playerTo, articleNr)
+            fileinput.close()
+
+        player.addPurchaseList(order)
+
+        turn += 1
+
+
+    ## print data to csv
+
+    s = StringIO.StringIO(text)
+    with open('fileName.csv', 'w') as f:
+        for line in s:
+            f.write(line)
